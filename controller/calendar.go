@@ -15,13 +15,8 @@ type CalendarController struct {
 	app.App
 }
 
-//CalController 定义日历控制器
-type CalController struct {
-	app.App
-}
-
 //Index 日历控制器默认的执行方法
-func (con *CalController) Index() {
+func (con *CalendarController) Index() {
 
 	//方式一
 	var buffer bytes.Buffer
