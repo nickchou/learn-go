@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+
 	app.Static["/js"] = "static/js"
 	app.AutoRouter(&controller.IndexController{})
 	app.AutoRouter(&controller.CommController{})
