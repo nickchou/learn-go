@@ -1,4 +1,4 @@
-package lunarcal
+package comm
 
 import (
 	"testing"

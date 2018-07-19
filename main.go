@@ -13,6 +13,7 @@ func main() {
 	app.AutoRouter(&controller.CalendarController{})
 	app.AutoRouter(&controller.ZhuzherController{})
 	app.AutoRouter(&controller.StringController{})
+	app.AutoRouter(&controller.AreaController{})
 	app.Router("login", &controller.LoginController{})
 	app.RunOn(":9090")
 }
