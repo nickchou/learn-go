@@ -4,3 +4,4 @@
 *.swo
 *.exe
 debug
+*.test
