@@ -69,10 +69,12 @@ func (con *AreaController) Prov() {
 		url = "http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2017/" + url
 		city, _ := comm.ToGBK(se.Text())
 		//插入数据
-		area := model.Area{Aid: provCode, Pid: 100000, Level: 1, Name: city, Lng: 2223.322321332, Lat: 32131.12345, URL: url}
+		area := model.Area{Aid: provCode, Pid: 100000, Level: 1, Name: city, Lng: 111.1111111, Lat: 111.111, URL: url}
 		area.SimName = comm.Substring(area.Name, 0, 2)
 		if area.SimName == "内蒙" {
 			area.SimName = "内蒙古"
+		} else if area.SimName == "黑龙" {
+			area.SimName = "黑龙江"
 		}
 		//主键为空返回true
 		issucc := db.NewRecord(&area)
@@ -80,8 +82,9 @@ func (con *AreaController) Prov() {
 			//插入数据
 			db.Create(&area)
 			//省份插入数组，方便后面拿市区数据
+			//if i < 2 {
 			provs = append(provs, area)
-
+			//}
 		}
 		//由于插入数据后有主键所以会返回false
 		issucc2 := db.NewRecord(&area)
@@ -116,11 +119,14 @@ func City(provs []model.Area) {
 			//省份信息提取前面3位
 			provID, _ := strconv.ParseInt(comm.Substring(cityCode, 0, 2)+"0000", 10, 64)
 			//实体信息
-			city := model.Area{Aid: cityID, Pid: provID, Level: 2, Name: CityName, Lng: 1.111111, Lat: 1.111111, URL: cityURL}
+			city := model.Area{Aid: cityID, Pid: provID, Level: 2, Name: CityName, Lng: 222.222, Lat: 2.2, URL: cityURL}
 			//入库
 			db.Create(&city)
 			citys = append(citys, city)
 		})
+		//更新省的标识为已加载子级
+		//db.Model(&prov).Update("load_child", 1)
+		db.Model(&prov).Updates(model.Area{LoadChild: 1})
 	}
 	fmt.Println("load city end")
 }
