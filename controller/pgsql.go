@@ -16,15 +16,15 @@ type PsqlController struct {
 
 //InitData 初始化基础数据 ( InitData  MakeData命名为啥不行 ?)
 func (con *PsqlController) Data() {
-	//msyql db
+	//msyql db connection
 	db, err := gorm.Open("mysql", "root:123456@(127.0.0.1:3306)/test?charset=utf8&parseTime=True&loc=Local")
-	//pgsql db
-	dbpg, errpg := gorm.Open("postgres", "host=127.0.0.1 port=5432 user=postgres dbname=test password=123456 sslmode=disable")
-	defer db.Close()
+	db.Close()
 	if err != nil {
 		fmt.Println(err)
 	}
-	defer dbpg.Close()
+	//pgsql db connection
+	dbpg, errpg := gorm.Open("postgres", "host=127.0.0.1 port=5432 user=postgres dbname=test password=123456 sslmode=disable")
+	dbpg.Close()
 	if errpg != nil {
 		fmt.Println(errpg)
 	}
