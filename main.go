@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-
 	app.Static["/js"] = "static/js"
 	app.AutoRouter(&controller.IndexController{})
 	app.AutoRouter(&controller.CommController{})
@@ -14,6 +13,7 @@ func main() {
 	app.AutoRouter(&controller.ZhuzherController{})
 	app.AutoRouter(&controller.StringController{})
 	app.AutoRouter(&controller.AreaController{})
+	app.AutoRouter(&controller.PsqlController{})
 	app.Router("login", &controller.LoginController{})
 	app.RunOn(":9090")
 }

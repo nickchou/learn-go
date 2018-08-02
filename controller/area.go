@@ -93,7 +93,7 @@ func (con *AreaController) Prov() {
 		buffer.WriteString(fmt.Sprintf("%v,%v,%v<br/>", i+1, city, url))
 	})
 	//根据省份加载城市信息
-	City(provs)
+	//City(provs)
 	io.WriteString(con.W(), buffer.String())
 }
 
