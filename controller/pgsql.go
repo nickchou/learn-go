@@ -123,7 +123,7 @@ func (con *PsqlController) Data() {
 		// dbpg.Create(&entity)
 	}
 	elapsed1 := time.Since(t1)
-	fmt.Println("data cost times:", elapsed1)
+	fmt.Println("building data takes times:", elapsed1)
 	//pgsql
 	t3 := time.Now()
 	for k, data3 := range rdDatas {
