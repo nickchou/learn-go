@@ -1,6 +1,6 @@
 package model
 
-//Area 国家行政区划相关
+//Area 国家行政区划相关,gorm可以定义 type、size、precision、not null、default 等完整约束
 type Area struct {
 	ID           int64   `gorm:"column:id;primary_key;AUTO_INCREMENT"`             //自增ID
 	Aid          int64   `gorm:"column:aid;not null"`                              //国家地区ID
