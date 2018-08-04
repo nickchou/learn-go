@@ -8,6 +8,7 @@ import (
 	"strconv"
 
 	"github.com/PuerkitoBio/goquery"
+	//都mysql的驱动包
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"github.com/nickchou/learn-go/app"
